@@ -10,6 +10,7 @@ var facing_direction :Vector2 = Vector2.DOWN
 
 var direction = ['N','NE','E','SE','S','SW','W','NW']
 
+var isattacking : bool = false
 
 func _physics_process(delta: float) -> void:
 	var inputdir = Vector2(
@@ -17,6 +18,16 @@ func _physics_process(delta: float) -> void:
 		Input.get_axis("ui_up","ui_down")
 		
 	).normalized()
+	
+	
+	if Input.is_action_just_pressed("attack") and not isattacking:
+		ATTACK()
+	
+	if isattacking:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
 	
 	velocity = inputdir * speed
 	move_and_slide()
@@ -29,11 +40,31 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
+func ATTACK():
+	isattacking= true
+	var dir_name = direction_name(facing_direction)
+	var anim = "ATK_" + dir_name
+	if animated_sprite_2d.sprite_frames.has_animation(anim):
+		animated_sprite_2d.play(anim)
+		
+		
+	else:
+		isattacking= false
+		return
+		
+		
+		
+	if not animated_sprite_2d.animation_finished.is_connected(_on_attack_animation_finished):
+		animated_sprite_2d.animation_finished.connect(_on_attack_animation_finished)
 	
 	
 	
 	
 	
+func _on_attack_animation_finished():
+	if isattacking:
+		isattacking= false
+		
 	
 func animation(name:String):
 	var dir_name = direction_name(facing_direction)
