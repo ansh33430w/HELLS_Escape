@@ -8,7 +8,7 @@ const speed = 200
 
 var facing_direction :Vector2 = Vector2.DOWN
 
-var direction = ['S','SW','SE','E','W','N','NE','NW']
+var direction = ['N','NE','E','SE','S','SW','W','NW']
 
 
 func _physics_process(delta: float) -> void:
@@ -52,7 +52,14 @@ func animation(name:String):
 	
 	
 func direction_name(dir):
-	var angle = rad_to_deg(dir.angle()) + 90 
-	if angle < 0: angle +=360 
-	var index = int(round(angle/45.0)) % 8 
-	return direction[index]
+	
+	var angle = rad_to_deg(dir.angle()) + 90
+	
+	if angle < 0:
+		angle += 360
+		
+	var index = int(round(angle/45.0)) % 8
+	
+	var dirname = direction[index]
+	
+	return dirname
