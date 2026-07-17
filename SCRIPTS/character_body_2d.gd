@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and not isattacking and not ishurt:
 		ATTACK()
 	
-	if isattacking:
+	if isattacking or ishurt:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
@@ -94,14 +94,17 @@ func DAMAGE(amt):
 	
 func hurt():
 	
+	print("hurt")
 	isattacking = false
 	ishurt = true
 	var dir_name = direction_name(facing_direction)
 	var anim = "HURT_" + dir_name
-	
+	print("trying anim: ", anim)
+	print("has it? ", animated_sprite_2d.sprite_frames.has_animation(anim))
+	print("available: ", animated_sprite_2d.sprite_frames.get_animation_names())
+	print(anim)
 	if animated_sprite_2d.sprite_frames.has_animation(anim):
 		animated_sprite_2d.play(anim)
-		
 	else:
 		ishurt = false
 		return
@@ -147,6 +150,7 @@ func ATTACK():
 	var anim = "ATK_" + dir_name
 	if animated_sprite_2d.sprite_frames.has_animation(anim):
 		animated_sprite_2d.play(anim)
+		
 		hitboxpos(dir_name)
 		hitbox.monitoring = true
 		

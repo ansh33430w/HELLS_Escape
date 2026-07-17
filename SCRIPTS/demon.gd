@@ -50,13 +50,8 @@ func _physics_process(delta: float) -> void:
 	
 	if toplayer.x != 0 :
 		animated_sprite_2d.flip_h = toplayer.x < 0
-		
-	if animated_sprite_2d.flip_h:
-		hurtbox.scale.x = -1
-		
-	if not animated_sprite_2d.flip_h:
-		hurtbox.scale.x = -1
-	
+		hurtbox.scale.x= -1 if animated_sprite_2d.flip_h else 1 
+		hitbox.scale.x = -1 if animated_sprite_2d.flip_h else 1 
 	if distance<= atkrange and canatk:
 		attack()
 	elif distance <= chaserange:
@@ -80,7 +75,7 @@ func animation(state):
 		
 func attack():
 	isatking= true
-	canatk =true
+	canatk =false
 	velocity = Vector2.ZERO
 	animation("ATTACK")
 	
