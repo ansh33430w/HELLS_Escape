@@ -99,9 +99,7 @@ func hurt():
 	ishurt = true
 	var dir_name = direction_name(facing_direction)
 	var anim = "HURT_" + dir_name
-	print("trying anim: ", anim)
-	print("has it? ", animated_sprite_2d.sprite_frames.has_animation(anim))
-	print("available: ", animated_sprite_2d.sprite_frames.get_animation_names())
+	
 	print(anim)
 	if animated_sprite_2d.sprite_frames.has_animation(anim):
 		animated_sprite_2d.play(anim)
