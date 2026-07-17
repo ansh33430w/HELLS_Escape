@@ -43,6 +43,7 @@ var hlt = maxhlt
 
 
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	print(hlt)
 	if isdead:
@@ -172,6 +173,7 @@ func _on_attack_animation_finished():
 		isattacking= false
 		hitbox.monitoring = false
 	
+@warning_ignore("shadowed_variable_base_class")
 func animation(name:String):
 	var dir_name = direction_name(facing_direction)
 	var anim = name + "_" + dir_name
