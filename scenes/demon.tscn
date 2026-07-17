@@ -5,6 +5,34 @@
 [ext_resource type="Texture2D" uid="uid://c20ylhsiig3pb" path="res://ASSETS/Tiny RPG Character Asset Pack 02 -Free Demon_A&Blood Monster_A/Characters(100x100 split)/Demon_A/Demon_A with shadows/Demon_A_Idle.png" id="3_k1cvy"]
 [ext_resource type="Texture2D" uid="uid://h33bcnilb5pg" path="res://ASSETS/Tiny RPG Character Asset Pack 02 -Free Demon_A&Blood Monster_A/Characters(100x100 split)/Demon_A/Demon_A with shadows/Demon_A_Walk.png" id="4_j12ep"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt4xr"]
+atlas = ExtResource("2_g6uwn")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6uwn"]
+atlas = ExtResource("2_g6uwn")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1cvy"]
+atlas = ExtResource("2_g6uwn")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j12ep"]
+atlas = ExtResource("2_g6uwn")
+region = Rect2(300, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iunx4"]
+atlas = ExtResource("2_g6uwn")
+region = Rect2(400, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br5hl"]
+atlas = ExtResource("2_g6uwn")
+region = Rect2(500, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4iun"]
+atlas = ExtResource("2_g6uwn")
+region = Rect2(600, 200, 100, 100)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_u20x4"]
 atlas = ExtResource("2_g6uwn")
 region = Rect2(0, 500, 100, 100)
@@ -97,6 +125,32 @@ region = Rect2(700, 0, 100, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yt4xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6uwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1cvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j12ep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iunx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br5hl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4iun")
+}],
+"loop": true,
+"name": &"ATTACK",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_u20x4")
 }, {
 "duration": 1.0,
@@ -185,17 +239,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_br5hl"]
 radius = 8.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4iun"]
-size = Vector2(20, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdquq"]
+size = Vector2(36, 19)
 
 [node name="DEMON" type="CharacterBody2D" unique_id=1672165231]
 script = ExtResource("1_yt4xr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=348193566]
-position = Vector2(0, -4.7683716e-07)
+position = Vector2(0, -2.842171e-14)
 scale = Vector2(1.56, 1.45)
 sprite_frames = SubResource("SpriteFrames_iunx4")
-animation = &"RUN"
+animation = &"ATTACK"
+frame_progress = 0.7054197
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=848966728]
 position = Vector2(3, 6)
@@ -203,6 +258,14 @@ shape = SubResource("CircleShape2D_br5hl")
 
 [node name="HURTBOX" type="Area2D" parent="." unique_id=965364643]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HURTBOX" unique_id=1856516902]
-position = Vector2(2, -2)
-shape = SubResource("RectangleShape2D_t4iun")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="HURTBOX" unique_id=833407356]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(-6, -2, -6, 2, -5, 2, -4, -1, -3, -1, -1, -3, 0, -3, -1, -4, -2, -5, -3, -6, -2, -7, -2, -11, -4, -12, -4, -16, -2, -16, -1, -14, 0, -13, 4, -11, 6, -11, 7, -10, 8, -11, 9, -11, 10, -15, 12, -17, 13, -15, 14, -10, 12, -8, 13, -6, 11, -5, 11, -2, 10, 0, 8, 1, 9, 3, 10, 4, 15, 4, 19, 3, 19, 7, 17, 10, 14, 11, 3, 11, 1, 9, -3, 9, -6, 8, -9, 6, -11, 3, -10, 0, -7, -2)
+
+[node name="HITBOX" type="Area2D" parent="." unique_id=1803365019]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HITBOX" unique_id=626810828]
+position = Vector2(20, 2.5)
+shape = SubResource("RectangleShape2D_sdquq")
+
+[connection signal="area_entered" from="HITBOX" to="." method="_on_hitbox_area_entered"]

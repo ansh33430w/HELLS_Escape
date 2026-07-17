@@ -7,7 +7,11 @@ extends CharacterBody2D
 
 
 @onready var hurtbox: Area2D = $HURTBOX
-@onready var collision_shape_2d: CollisionShape2D = $HURTBOX/CollisionShape2D
+@onready var collision_shape_2d: CollisionPolygon2D = $HURTBOX/CollisionShape2D
+
+@onready var hitbox: Area2D = $HITBOX
+@onready var hitbox_collision_shape_2d_2: CollisionShape2D = $HITBOX/CollisionShape2D2
+
 
 var speed = 50
 var maxhlt = 60
@@ -15,6 +19,12 @@ var hlt = maxhlt
 var chaserange = 250.0
 var isdead = false
 var ishurt = false
+var canatk = true
+var isatking := false
+var atkrange = 40.0
+var atkdmg = 10
+var atkcdn = 1.0
+
 
 var player : Node2D = null
 
@@ -23,8 +33,8 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
-	print(hlt)
 	if isdead:
 		return
 	if ishurt :
@@ -35,12 +45,22 @@ func _physics_process(delta: float) -> void:
 	if player == null :
 		return
 		
+	var toplayer = player.global_position - global_position
+	var distance = toplayer.length()
 	
-	var distance = global_position.distance_to(player.global_position)
-	
-	if distance<= chaserange:
-		var dir = (player.global_position - global_position).normalized()
+	if toplayer.x != 0 :
+		animated_sprite_2d.flip_h = toplayer.x < 0
 		
+	if animated_sprite_2d.flip_h:
+		hurtbox.scale.x = -1
+		
+	if not animated_sprite_2d.flip_h:
+		hurtbox.scale.x = -1
+	
+	if distance<= atkrange and canatk:
+		attack()
+	elif distance <= chaserange:
+		var dir = toplayer.normalized()
 		velocity = dir * speed
 		move_and_slide()
 		animation("RUN")
@@ -57,6 +77,38 @@ func animation(state):
 		if animated_sprite_2d.animation != state:
 			animated_sprite_2d.play(state)
 		
+		
+func attack():
+	isatking= true
+	canatk =true
+	velocity = Vector2.ZERO
+	animation("ATTACK")
+	
+	if not animated_sprite_2d.animation_finished.is_connected(_on_attack_finished):
+		animated_sprite_2d.animation_finished.connect(_on_attack_finished)
+	
+	
+	
+func _on_attack_finished():
+	if isatking:
+		isatking = false
+		animated_sprite_2d.animation_finished.disconnect(_on_attack_finished)
+		get_tree().create_timer(atkcdn).timeout.connect(func():canatk = true)
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+
+
+
+
 		
 		
 func Damage(amt):
@@ -101,5 +153,14 @@ func die():
 	velocity = Vector2.ZERO
 	hurtbox.monitoring = false
 	animation("DIE")
-	
+	await animated_sprite_2d.animation_finished
+	queue_free()
 	#have to add droping mech
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	print("yea")
+	if area.is_in_group("player_hurtbox"):
+		print("okkk")
+		var target = area.get_parent()
+		target.DAMAGE(10)

@@ -4515,29 +4515,37 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2axws"]
-radius = 17.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yi2kj"]
+size = Vector2(31, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhr3r"]
-size = Vector2(34, 92.5)
+size = Vector2(26, 62.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t53lx"]
+size = Vector2(32, 47)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1585367809 groups=["player"]]
 script = ExtResource("1_dn4c7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=143959101]
 sprite_frames = SubResource("SpriteFrames_3mgkr")
-animation = &"ATK_E"
-frame = 14
-frame_progress = 1.0
+animation = &"IDLE_S"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=969420748]
-position = Vector2(1, 17)
-shape = SubResource("CircleShape2D_2axws")
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_yi2kj")
 
 [node name="HITBOX" type="Area2D" parent="." unique_id=1591216259]
+monitoring = false
 
 [node name="hitboxshape" type="CollisionShape2D" parent="HITBOX" unique_id=2045608443]
-position = Vector2(17, 0)
+position = Vector2(13, 15.125)
 shape = SubResource("RectangleShape2D_rhr3r")
+
+[node name="HURTBOX" type="Area2D" parent="." unique_id=142753370 groups=["player_hurtbox"]]
+
+[node name="HURTBOXSHAPE" type="CollisionShape2D" parent="HURTBOX" unique_id=2035618779]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_t53lx")
 
 [connection signal="area_entered" from="HITBOX" to="." method="_on_hitbox_area_entered"]
