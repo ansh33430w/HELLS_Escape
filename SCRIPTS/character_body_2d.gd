@@ -45,7 +45,6 @@ var hlt = maxhlt
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
-	print(hlt)
 	if isdead:
 		return
 	var inputdir = Vector2(
@@ -202,3 +201,20 @@ func direction_name(dir):
 	var dirname = direction[index]
 	
 	return dirname
+
+
+
+
+
+
+
+
+
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	
+	if area.is_in_group("monsterhurtbox"):
+		var enemy = area.get_parent()
+		if enemy.has_method("Damage"):
+			enemy.Damage(20)

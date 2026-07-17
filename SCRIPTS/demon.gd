@@ -7,11 +7,12 @@ extends CharacterBody2D
 
 
 @onready var hurtbox: Area2D = $HURTBOX
+@onready var collision_shape_2d: CollisionShape2D = $HURTBOX/CollisionShape2D
 
-var speed = 100
+var speed = 50
 var maxhlt = 60
 var hlt = maxhlt
-var range = 250.0
+var chaserange = 250.0
 var isdead = false
 var ishurt = false
 
@@ -23,6 +24,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	print(hlt)
 	if isdead:
 		return
 	if ishurt :
@@ -36,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	
 	var distance = global_position.distance_to(player.global_position)
 	
-	if distance<= range:
+	if distance<= chaserange:
 		var dir = (player.global_position - global_position).normalized()
 		
 		velocity = dir * speed
