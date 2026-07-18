@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://8mvhl3dqc3pn" path="res://ASSETS/free-2d-top-down-pixel-dungeon-asset-pack/Tiled_files/walls_floor.png" id="1_2f0wh"]
 [ext_resource type="Texture2D" uid="uid://b33r3mtql0bxm" path="res://ASSETS/free-2d-top-down-pixel-dungeon-asset-pack/Tiled_files/Objects.png" id="2_2f0wh"]
+[ext_resource type="PackedScene" uid="uid://do2es8ck7r4vh" path="res://scenes/door.tscn" id="3_wjngk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tw1b0"]
 texture = ExtResource("1_2f0wh")
@@ -829,9 +830,6 @@ texture = ExtResource("2_2f0wh")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_2f0wh")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2f0wh"]
-radius = 12.0
-
 [node name="SPAWNROOM" type="Node2D" unique_id=1794141779]
 
 [node name="walls" type="TileMapLayer" parent="." unique_id=785314046]
@@ -852,8 +850,4 @@ position = Vector2(208, 200)
 
 [node name="upgradearea" type="Marker2D" parent="." unique_id=1198359292]
 
-[node name="door" type="Area2D" parent="." unique_id=642504541]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="door" unique_id=339252550]
-position = Vector2(769, 135)
-shape = SubResource("CircleShape2D_2f0wh")
+[node name="door" parent="." unique_id=1884309613 instance=ExtResource("3_wjngk")]

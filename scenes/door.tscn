@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://do2es8ck7r4vh"]
+
+[ext_resource type="Script" uid="uid://bbm6f2fqvildk" path="res://SCRIPTS/door.gd" id="1_hpvv5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2f0wh"]
+radius = 12.0
+
+[node name="door" type="Area2D" unique_id=1884309613]
+script = ExtResource("1_hpvv5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=653229315]
+position = Vector2(769, 135)
+shape = SubResource("CircleShape2D_2f0wh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

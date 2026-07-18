@@ -14,6 +14,10 @@ config/name="HELLS_Escape"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Roommanager="*uid://k85pupdxkrba"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
