@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://bqqxkrqax43jd"]
 
-[ext_resource type="PackedScene" uid="uid://k6o5hb5k6qip" path="res://scenes/rooms/floor.tscn" id="1_hnbyo"]
+[ext_resource type="PackedScene" uid="uid://k6o5hb5k6qip" path="res://scenes/floor.tscn" id="1_hnbyo"]
 [ext_resource type="PackedScene" uid="uid://twedq7scpg67" path="res://scenes/walls.tscn" id="1_scgta"]
-[ext_resource type="PackedScene" uid="uid://d3qki0dahdqk3" path="res://scenes/rooms/decor.tscn" id="3_fbq1s"]
+[ext_resource type="PackedScene" uid="uid://d3qki0dahdqk3" path="res://scenes/decor.tscn" id="3_fbq1s"]
 
 [node name="room1" type="Node2D" unique_id=237011726]
 
