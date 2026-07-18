@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://8mvhl3dqc3pn" path="res://ASSETS/free-2d-top-down-pixel-dungeon-asset-pack/Tiled_files/walls_floor.png" id="1_2f0wh"]
 [ext_resource type="Texture2D" uid="uid://b33r3mtql0bxm" path="res://ASSETS/free-2d-top-down-pixel-dungeon-asset-pack/Tiled_files/Objects.png" id="2_2f0wh"]
 [ext_resource type="PackedScene" uid="uid://do2es8ck7r4vh" path="res://scenes/door.tscn" id="3_wjngk"]
+[ext_resource type="PackedScene" uid="uid://bujyolfs7yfbd" path="res://scenes/character_body_2d.tscn" id="4_tw1b0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tw1b0"]
 texture = ExtResource("1_2f0wh")
@@ -851,3 +852,7 @@ position = Vector2(208, 200)
 [node name="upgradearea" type="Marker2D" parent="." unique_id=1198359292]
 
 [node name="door" parent="." unique_id=1884309613 instance=ExtResource("3_wjngk")]
+
+[node name="CharacterBody2D" parent="." unique_id=1585367809 instance=ExtResource("4_tw1b0")]
+position = Vector2(279, 289)
+scale = Vector2(0.56, 0.56)

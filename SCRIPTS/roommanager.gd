@@ -1,8 +1,10 @@
 extends Node
 
 
-@export var fight_room_scenes :Array[PackedScene]= []
-@export var spawneoom : PackedScene
+@export var fight_room_scenes :Array[PackedScene]= [
+	preload("res://scenes/rooms/room_1.tscn")
+]
+@export var spawneoom : PackedScene = preload("res://scenes/rooms/spawnroom.tscn")
 
 
 var cur_room : Node = null
@@ -24,6 +26,10 @@ func start_run():
 	if fight_room_scenes.is_empty():
 		return
 	in_spawn_room = false
+	var room = get_tree().current_scene.get_node_or_null("SPAWNROOM")
+	if room:
+		room.visible = false
+		room.process_mode = Node.PROCESS_MODE_DISABLED
 	Loadnextroom()
 	
 	
