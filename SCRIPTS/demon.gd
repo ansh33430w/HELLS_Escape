@@ -21,7 +21,7 @@ var isdead = false
 var ishurt = false
 var canatk = true
 var isatking := false
-var atkrange = 40.0
+var atkrange = 90
 var atkdmg = 10
 var atkcdn = 1.0
 
@@ -77,10 +77,14 @@ func attack():
 	isatking= true
 	canatk =false
 	velocity = Vector2.ZERO
-	animation("ATTACK")
+	animated_sprite_2d.play("ATTACK")
+	await animated_sprite_2d.animation_finished
+	for area in hitbox.get_overlapping_areas():
+		if area.is_in_group("player_hurtbox"):
+			area.get_parent().DAMAGE(atkdmg)
+		if not animated_sprite_2d.animation_finished.is_connected(_on_attack_finished):
+			animated_sprite_2d.animation_finished.connect(_on_attack_finished)
 	
-	if not animated_sprite_2d.animation_finished.is_connected(_on_attack_finished):
-		animated_sprite_2d.animation_finished.connect(_on_attack_finished)
 	
 	
 	
@@ -88,7 +92,8 @@ func _on_attack_finished():
 	if isatking:
 		isatking = false
 		animated_sprite_2d.animation_finished.disconnect(_on_attack_finished)
-		get_tree().create_timer(atkcdn).timeout.connect(func():canatk = true)
+		await get_tree().create_timer(atkcdn).timeout
+		canatk=true
 	
 		
 		
@@ -151,11 +156,3 @@ func die():
 	await animated_sprite_2d.animation_finished
 	queue_free()
 	#have to add droping mech
-
-
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	print("yea")
-	if area.is_in_group("player_hurtbox"):
-		print("okkk")
-		var target = area.get_parent()
-		target.DAMAGE(10)
