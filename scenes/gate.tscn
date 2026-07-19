@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dykgahxvklox"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wodat"]
+radius = 15.033297
+
+[node name="gate" type="Area2D" unique_id=147368474]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1404885280]
+position = Vector2(768, 129)
+shape = SubResource("CircleShape2D_wodat")

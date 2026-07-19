@@ -15,7 +15,7 @@ var treaure_room = preload("res://scenes/rooms/room_4.tscn")
 var cur_room : Node = null
 var player : Node = null
 var in_spawn_room : bool = true
-
+var roomscleared = 0
 
 func _ready() -> void:
 	call_deferred("_initgame")
@@ -71,10 +71,13 @@ func _connect_gate():
 	
 func _on_gate_entered(body):
 	if body.is_in_group("player"):
+		if not  in_spawn_room:
+			roomscleared += 1
 		Loadnextroom()
 		
 		
 		
 		
 func playerdied():
+	roomscleared =0 
 	Loadspawnroom()
