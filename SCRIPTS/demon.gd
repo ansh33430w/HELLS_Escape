@@ -21,9 +21,9 @@ var isdead = false
 var ishurt = false
 var canatk = true
 var isatking := false
-var atkrange = 90
+var atkrange = 40
 var atkdmg = 10
-var atkcdn = 1.0
+var atkcdn = 1.5
 
 
 var player : Node2D = null
@@ -37,7 +37,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if isdead:
 		return
-	if ishurt :
+	if ishurt or isatking :
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
@@ -80,22 +80,15 @@ func attack():
 	animated_sprite_2d.play("ATTACK")
 	await animated_sprite_2d.animation_finished
 	for area in hitbox.get_overlapping_areas():
-		if area.is_in_group("player_hurtbox"):
+		if is_instance_valid(area) and area.is_in_group("player_hurtbox"):
 			area.get_parent().DAMAGE(atkdmg)
-		if not animated_sprite_2d.animation_finished.is_connected(_on_attack_finished):
-			animated_sprite_2d.animation_finished.connect(_on_attack_finished)
-	
-	
-	
-	
-func _on_attack_finished():
-	if isatking:
 		isatking = false
-		animated_sprite_2d.animation_finished.disconnect(_on_attack_finished)
 		await get_tree().create_timer(atkcdn).timeout
 		canatk=true
 	
-		
+	
+	
+
 		
 		
 		

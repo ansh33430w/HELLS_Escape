@@ -145,7 +145,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t4iun")
 }],
-"loop": true,
+"loop": false,
 "name": &"ATTACK",
 "speed": 10.0
 }, {
@@ -250,7 +250,8 @@ position = Vector2(0, -2.842171e-14)
 scale = Vector2(1.56, 1.45)
 sprite_frames = SubResource("SpriteFrames_iunx4")
 animation = &"ATTACK"
-frame_progress = 0.79396886
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=848966728]
 position = Vector2(3, 6)

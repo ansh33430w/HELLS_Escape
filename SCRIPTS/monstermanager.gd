@@ -24,6 +24,7 @@ func get_waves():
 func startwave():
 	if cur_wave >= totalwave:
 		allwaveclear()
+		return
 	cur_wave += 1
 	monsteralive = 0
 	
