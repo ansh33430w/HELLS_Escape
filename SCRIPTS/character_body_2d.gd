@@ -132,7 +132,11 @@ func die():
 	var anim = "DIE_" + dir_name
 	if animated_sprite_2d.sprite_frames.has_animation(anim):
 		animated_sprite_2d.play(anim)
-
+	await animated_sprite_2d.animation_finished
+	Roommanager.playerdied()
+	
+	isdead=false
+	hlt = maxhlt
 
 
 

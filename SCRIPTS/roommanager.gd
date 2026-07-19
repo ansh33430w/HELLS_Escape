@@ -2,9 +2,14 @@ extends Node
 
 
 @export var fight_room_scenes :Array[PackedScene]= [
-	preload("res://scenes/rooms/room_1.tscn")
+	preload("res://scenes/rooms/room_1.tscn"),
+	preload("res://scenes/rooms/room_2.tscn"),
+	preload("res://scenes/rooms/room_3.tscn")
 ]
-@export var spawneoom : PackedScene = preload("res://scenes/rooms/spawnroom.tscn")
+@export var spawnroom : PackedScene = preload("res://scenes/rooms/room_0.tscn")
+
+var treaure_room = preload("res://scenes/rooms/room_4.tscn")
+
 
 
 var cur_room : Node = null
@@ -13,49 +18,63 @@ var in_spawn_room : bool = true
 
 
 func _ready() -> void:
-	call_deferred("_find_player")
+	call_deferred("_initgame")
 	
 	
-func _find_player():
+func _initgame():
 	player = get_tree().get_first_node_in_group("player"
 	)
 	
+	Loadspawnroom()
 	
-
-func start_run():
-	if fight_room_scenes.is_empty():
-		return
-	in_spawn_room = false
-	var room = get_tree().current_scene.get_node_or_null("SPAWNROOM")
-	if room:
-		room.visible = false
-		room.process_mode = Node.PROCESS_MODE_DISABLED
-	Loadnextroom()
+	
+func Loadspawnroom():
+	change_room(spawnroom)
+	in_spawn_room = true
+	_connect_gate()
+	var spawn = cur_room.get_node_or_null("spawnpoint")
+	if spawn and player:
+		player.global_position =spawn.global_position
+	
+	
 	
 	
 func Loadnextroom():
-	if cur_room:
-		cur_room.queue_free()
-		
-	var room_scene = fight_room_scenes[randi()%fight_room_scenes.size()]
-	cur_room= room_scene.instantiate()
-	get_tree().current_scene.add_child(cur_room)
-		
+	in_spawn_room = false
+	var roomscene :PackedScene
+	if randi()%3 == 0:
+		roomscene = treaure_room
+	else:
+		roomscene = fight_room_scenes[randi()% fight_room_scenes.size()]
+	
+	change_room(roomscene)
+	_connect_gate()
 	var spawn = cur_room.get_node_or_null("SPAWNPOINT")
 	if spawn and player:
 		player.global_position = spawn.global_position
 			
-		
-func  return_spawnromm():
-	in_spawn_room = true
-	if cur_room :
+
+func change_room(scene:PackedScene):
+	if cur_room:
 		cur_room.queue_free()
-		cur_room=null
-		
-	if spawneoom and player :
-		var spawn = get_tree().current_scene.get_node_or_null("SPAWNROOM/spawnpoint")
-		if spawn :
-			player.global_position = spawn.global_position
+	cur_room=scene.instantiate()
+	get_tree().current_scene.add_child(cur_room)
+	
+func _connect_gate():
+	var gate = cur_room.get_node_or_null("gate")
+	if gate and gate is Area2D:
+		if not gate.body_entered.connect(_on_gate_entered):
+			gate.body_entered.connect(_on_gate_entered)
 			
-func upgrade():
-	return in_spawn_room
+	
+	
+	
+func _on_gate_entered(body):
+	if body.is_in_group("player"):
+		Loadnextroom()
+		
+		
+		
+		
+func playerdied():
+	Loadspawnroom()
