@@ -82,7 +82,7 @@ func DAMAGE(amt):
 	if isdead:
 		return
 	hlt-= amt 
-	
+	get_tree().get_first_node_in_group("hud").updatehlt(hlt,maxhlt)
 	hlt = max(hlt, 0 )
 	
 	if hlt <= 0:
@@ -136,7 +136,9 @@ func die():
 	Roommanager.playerdied()
 	
 	isdead=false
+	
 	hlt = maxhlt
+	get_tree().get_first_node_in_group("hud").updatehlt(hlt,maxhlt)
 
 
 
