@@ -31,7 +31,7 @@ var hitbox_vector := {
 const speed = 200
 
 var facing_direction :Vector2 = Vector2.DOWN
-
+var taking_damage : bool = false
 var direction = ['N','NE','E','SE','S','SW','W','NW']
 
 var isattacking : bool = false
@@ -81,16 +81,24 @@ func _physics_process(delta: float) -> void:
 func DAMAGE(amt):
 	if isdead:
 		return
+	
+	
+		
 	hlt-= amt 
+	
+	
 	get_tree().get_first_node_in_group("hud").updatehlt(hlt,maxhlt)
 	hlt = max(hlt, 0 )
-	
+	var monster = get_tree().get_nodes_in_group("monster")
+	if monster.size()> 0:
+		var dir  =(global_position - monster[0].global_position).normslized()
+		velocity = dir * 300
 	if hlt <= 0:
 		die()
-		
+	
 	else: 
 		hurt()
-	
+		
 	
 func hurt():
 	

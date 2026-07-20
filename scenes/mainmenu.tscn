@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://1bjtsvip3psl"]
+
+[ext_resource type="Script" uid="uid://n6avbhw767ku" path="res://SCRIPTS/mainmenu.gd" id="1_3vvtq"]
+[ext_resource type="Texture2D" uid="uid://cnaswbi2m0pw0" path="res://ASSETS/fantasy_pixelart_ui/panels/gold_panel.png" id="1_5mbse"]
+[ext_resource type="Texture2D" uid="uid://cw54tgdqo64nq" path="res://ASSETS/fantasy_pixelart_ui/buttons/gold_button_normal.png" id="2_natt5"]
+[ext_resource type="FontFile" uid="uid://dpsqtwi8e5sp0" path="res://ASSETS/PixelifySans-Bold.ttf" id="3_s5g8n"]
+
+[node name="MAINMENU" type="Control" unique_id=615331632]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3vvtq")
+
+[node name="bg" type="TextureRect" parent="." unique_id=1712150123]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 1136.0
+offset_bottom = 636.0
+texture = ExtResource("1_5mbse")
+
+[node name="BUTTONS" type="Node" parent="." unique_id=1935016112]
+
+[node name="START" type="Button" parent="BUTTONS" unique_id=461698804]
+offset_left = 448.0
+offset_top = 248.0
+offset_right = 676.0
+offset_bottom = 347.0
+theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
+theme_override_fonts/font = ExtResource("3_s5g8n")
+text = "START"
+icon = ExtResource("2_natt5")
+flat = true
+icon_alignment = 1
+expand_icon = true
+text_direction = 3
+
+[node name="OPTIONS" type="Button" parent="BUTTONS" unique_id=1141452672]
+offset_left = 512.0
+offset_top = 376.0
+offset_right = 624.0
+offset_bottom = 477.0
+theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
+theme_override_fonts/font = ExtResource("3_s5g8n")
+theme_override_font_sizes/font_size = 11
+text = "OPTIONS"
+icon = ExtResource("2_natt5")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="BUTTONS/START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="BUTTONS/OPTIONS" to="." method="_on_options_pressed"]
