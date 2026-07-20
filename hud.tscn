@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://wxloc7sduh63" path="res://hud.gd" id="1_8sq4i"]
 [ext_resource type="Texture2D" uid="uid://cs1cunyhnmp44" path="res://ASSETS/healthbarUnder.png" id="1_64ctp"]
 [ext_resource type="Texture2D" uid="uid://cm0ffhm3tdwub" path="res://ASSETS/healthbarProgress.png" id="2_8sq4i"]
+[ext_resource type="FontFile" uid="uid://dpsqtwi8e5sp0" path="res://ASSETS/PixelifySans-Bold.ttf" id="4_640wx"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1247699368]
 script = ExtResource("1_8sq4i")
@@ -29,4 +30,5 @@ offset_left = 23.0
 offset_top = 58.0
 offset_right = 121.0
 offset_bottom = 92.0
+theme_override_fonts/font = ExtResource("4_640wx")
 theme_override_font_sizes/font_size = 32

@@ -82,9 +82,9 @@ func attack():
 	for area in hitbox.get_overlapping_areas():
 		if is_instance_valid(area) and area.is_in_group("player_hurtbox"):
 			area.get_parent().DAMAGE(atkdmg)
-		isatking = false
-		await get_tree().create_timer(atkcdn).timeout
-		canatk=true
+	isatking = false
+	await get_tree().create_timer(atkcdn).timeout
+	canatk=true
 	
 	
 	

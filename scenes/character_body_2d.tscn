@@ -4515,8 +4515,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yi2kj"]
-size = Vector2(19, 46)
+[sub_resource type="CircleShape2D" id="CircleShape2D_rhr3r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhr3r"]
 size = Vector2(26, 62.25)
@@ -4532,8 +4531,8 @@ sprite_frames = SubResource("SpriteFrames_3mgkr")
 animation = &"IDLE_S"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=969420748]
-position = Vector2(0.5, 20)
-shape = SubResource("RectangleShape2D_yi2kj")
+position = Vector2(0, 31)
+shape = SubResource("CircleShape2D_rhr3r")
 
 [node name="HITBOX" type="Area2D" parent="." unique_id=1591216259]
 visible = false

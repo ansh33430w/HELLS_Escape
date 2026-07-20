@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dkia8qrm35y37"]
+
+[ext_resource type="Texture2D" uid="uid://c7wegwghrke76" path="res://ASSETS/fantasy_pixelart_ui/map/map.png" id="1_blm8b"]
+[ext_resource type="Script" uid="uid://d0jfe4cbt4l48" path="res://SCRIPTS/upgradeui.gd" id="1_ehi2r"]
+[ext_resource type="Texture2D" uid="uid://x3gt0td1bom7" path="res://ASSETS/fantasy_pixelart_ui/scroll/gold_scrollbar_grabber.png" id="2_ax7ar"]
+[ext_resource type="FontFile" uid="uid://c48c502d34me7" path="res://ASSETS/PixelifySans-Medium.ttf" id="3_js50n"]
+[ext_resource type="FontFile" uid="uid://bxodx0fcfl7ok" path="res://ASSETS/PixelifySans-SemiBold.ttf" id="4_uu67r"]
+
+[node name="upgradeui" type="CanvasLayer" unique_id=971541773]
+script = ExtResource("1_ehi2r")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1665455643]
+offset_left = 195.0
+offset_top = 74.0
+offset_right = 933.0
+offset_bottom = 540.0
+texture = ExtResource("1_blm8b")
+
+[node name="dmg" type="Button" parent="." unique_id=820545765]
+offset_left = 607.0
+offset_top = 232.0
+offset_right = 811.0
+offset_bottom = 301.0
+text = "100 COINS"
+icon = ExtResource("2_ax7ar")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="dmglabel" type="Label" parent="dmg" unique_id=1289619448]
+layout_mode = 0
+offset_left = -234.0
+offset_top = 8.0
+offset_right = -24.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("3_js50n")
+theme_override_font_sizes/font_size = 32
+text = "DAMAGE +50%"
+
+[node name="HP" type="Button" parent="." unique_id=1121989428]
+offset_left = 609.0
+offset_top = 327.0
+offset_right = 813.0
+offset_bottom = 396.0
+text = "100 COINS"
+icon = ExtResource("2_ax7ar")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="HPLABEL" type="Label" parent="HP" unique_id=108011826]
+layout_mode = 0
+offset_left = -234.0
+offset_top = 8.0
+offset_right = -24.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("3_js50n")
+theme_override_font_sizes/font_size = 32
+text = "HEALTH + 100"
+
+[node name="close" type="Button" parent="." unique_id=2112073014]
+offset_left = 525.0
+offset_top = 431.0
+offset_right = 642.0
+offset_bottom = 483.0
+text = "EXIT"
+icon = ExtResource("2_ax7ar")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="heading" type="Label" parent="." unique_id=436786303]
+offset_left = 442.0
+offset_top = 150.0
+offset_right = 689.0
+offset_bottom = 189.0
+theme_override_fonts/font = ExtResource("4_uu67r")
+theme_override_font_sizes/font_size = 32
+text = "ABILITY TEMPLE"
+
+[node name="gold" type="Label" parent="." unique_id=1027203211]
+offset_left = 297.0
+offset_top = 433.0
+offset_right = 392.0
+offset_bottom = 467.0
+theme_override_fonts/font = ExtResource("3_js50n")
+theme_override_font_sizes/font_size = 24

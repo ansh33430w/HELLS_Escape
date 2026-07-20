@@ -22,6 +22,8 @@ func _ready() -> void:
 	
 	
 func _initgame():
+	if get_tree().current_scene.name != "main":
+		return
 	player = get_tree().get_first_node_in_group("player"
 	)
 	

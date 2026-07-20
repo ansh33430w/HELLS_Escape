@@ -27,6 +27,8 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 player=""
 player_hurtbox=""
+monster=""
+upgradeui=""
 
 [input]
 

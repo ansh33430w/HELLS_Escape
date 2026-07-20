@@ -40,8 +40,8 @@ var isdead : bool = false
 
 var maxhlt = 100
 var hlt = maxhlt
-
-
+var invincible = false
+var dmg_multiplier :float = 1.0
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
@@ -79,19 +79,19 @@ func _physics_process(delta: float) -> void:
 	
 	
 func DAMAGE(amt):
-	if isdead:
+	if isdead or invincible:
 		return
 	
 	
 		
 	hlt-= amt 
 	
-	
-	get_tree().get_first_node_in_group("hud").updatehlt(hlt,maxhlt)
 	hlt = max(hlt, 0 )
+	get_tree().get_first_node_in_group("hud").updatehlt(hlt,maxhlt)
+	
 	var monster = get_tree().get_nodes_in_group("monster")
 	if monster.size()> 0:
-		var dir  =(global_position - monster[0].global_position).normslized()
+		var dir  =(global_position - monster[0].global_position).normalized()
 		velocity = dir * 300
 	if hlt <= 0:
 		die()
@@ -111,6 +111,9 @@ func hurt():
 	print(anim)
 	if animated_sprite_2d.sprite_frames.has_animation(anim):
 		animated_sprite_2d.play(anim)
+		animated_sprite_2d.modulate = Color(1,.2,.2)
+		await get_tree().create_timer(.5).timeout
+		animated_sprite_2d.modulate = Color(1,1,1)
 	else:
 		ishurt = false
 		return
@@ -233,4 +236,4 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("monsterhurtbox"):
 		var enemy = area.get_parent()
 		if enemy.has_method("Damage"):
-			enemy.Damage(20)
+			enemy.Damage(int(20*dmg_multiplier))
