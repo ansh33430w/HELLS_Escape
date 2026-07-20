@@ -85,7 +85,7 @@ func DAMAGE(amt):
 	
 		
 	hlt-= amt 
-	
+	$Camera2D.shake()
 	hlt = max(hlt, 0 )
 	get_tree().get_first_node_in_group("hud").updatehlt(hlt,maxhlt)
 	
