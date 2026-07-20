@@ -23,7 +23,7 @@ var canatk = true
 var isatking := false
 var atkrange = 40
 var atkdmg = 10
-var atkcdn = 1.5
+var atkcdn = 2
 
 
 var player : Node2D = null

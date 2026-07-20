@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Roommanager="*uid://k85pupdxkrba"
+Gamedata="*uid://b16ef01jc3pov"
 
 [editor_plugins]
 

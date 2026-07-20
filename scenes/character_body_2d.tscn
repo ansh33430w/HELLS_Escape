@@ -4516,7 +4516,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yi2kj"]
-size = Vector2(31, 46)
+size = Vector2(19, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhr3r"]
 size = Vector2(26, 62.25)
@@ -4532,10 +4532,11 @@ sprite_frames = SubResource("SpriteFrames_3mgkr")
 animation = &"IDLE_S"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=969420748]
-position = Vector2(0, 20)
+position = Vector2(0.5, 20)
 shape = SubResource("RectangleShape2D_yi2kj")
 
 [node name="HITBOX" type="Area2D" parent="." unique_id=1591216259]
+visible = false
 monitoring = false
 
 [node name="hitboxshape" type="CollisionShape2D" parent="HITBOX" unique_id=2045608443]
@@ -4543,6 +4544,7 @@ position = Vector2(13, 15.125)
 shape = SubResource("RectangleShape2D_rhr3r")
 
 [node name="HURTBOX" type="Area2D" parent="." unique_id=142753370 groups=["player_hurtbox"]]
+visible = false
 
 [node name="HURTBOXSHAPE" type="CollisionShape2D" parent="HURTBOX" unique_id=2035618779]
 position = Vector2(0, 3.5)
