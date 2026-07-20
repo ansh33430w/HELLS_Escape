@@ -1,8 +1,8 @@
 extends Node2D
 
 
-var monsterscene = preload("res://scenes/demon.tscn")
-
+var monsterscene1 = preload("res://scenes/demon.tscn")
+var monsterscene2 = preload("res://scenes/blood_monster.tscn")
 var totalwave = 1
 var cur_wave =0
 var monsteralive = 0
@@ -31,7 +31,11 @@ func startwave():
 	for i in range(1,11):
 		var marker = get_node_or_null("monstermarker" + str(i))
 		if marker :
-			var monster = monsterscene.instantiate()
+			var monster
+			if randf() < 0.6 :
+				monster = monsterscene1.instantiate()
+			else:
+				monster = monsterscene2.instantiate()
 			add_child(monster)
 			monster.global_position = marker.global_position
 			monster.connect("tree_exited",_on_monster_died)

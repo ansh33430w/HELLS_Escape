@@ -248,7 +248,7 @@ particle_flag_disable_z = true
 velocity_pivot = Vector3(50, 0, 0)
 spread = 180.0
 initial_velocity_min = 54.84
-initial_velocity_max = 145.79
+initial_velocity_max = 1000.0
 gravity = Vector3(0, 98, 0)
 scale_min = 2.5
 scale_max = 5.4
@@ -269,19 +269,20 @@ frame_progress = 1.0
 position = Vector2(6, 1)
 shape = SubResource("CircleShape2D_br5hl")
 
-[node name="HURTBOX" type="Area2D" parent="." unique_id=965364643]
+[node name="hurtbox" type="Area2D" parent="." unique_id=965364643]
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="HURTBOX" unique_id=833407356]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="hurtbox" unique_id=833407356]
 position = Vector2(3, 0)
 polygon = PackedVector2Array(-6, -2, -6, 2, -5, 2, -4, -1, -3, -1, -1, -3, 0, -3, -1, -4, -2, -5, -3, -6, -2, -7, -2, -11, -4, -12, -4, -16, -2, -16, -1, -14, 0, -13, 4, -11, 6, -11, 7, -10, 8, -11, 9, -11, 10, -15, 12, -17, 13, -15, 14, -10, 12, -8, 13, -6, 11, -5, 11, -2, 10, 0, 8, 1, 9, 3, 10, 4, 15, 4, 19, 3, 19, 7, 17, 10, 14, 11, 3, 11, 1, 9, -3, 9, -6, 8, -9, 6, -11, 3, -10, 0, -7, -2)
 
-[node name="HITBOX" type="Area2D" parent="." unique_id=1803365019]
+[node name="hitbox" type="Area2D" parent="." unique_id=1803365019]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HITBOX" unique_id=626810828]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox" unique_id=626810828]
 position = Vector2(16, 2.5)
 shape = SubResource("RectangleShape2D_sdquq")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1784929746]
 emitting = false
 one_shot = true
+explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_yt4xr")

@@ -7,11 +7,11 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
-@onready var hurtbox: Area2D = $HURTBOX
-@onready var collision_shape_2d: CollisionPolygon2D = $HURTBOX/CollisionShape2D
+@onready var hurtbox: Area2D = $hurtbox
+@onready var collision_shape_2d: CollisionPolygon2D = $hurtbox/CollisionShape2D
 
-@onready var hitbox: Area2D = $HITBOX
-@onready var hitbox_collision_shape_2d_2: CollisionShape2D = $HITBOX/CollisionShape2D2
+@onready var hitbox: Area2D = $hitbox
+@onready var hitbox_collision_shape_2d_2: CollisionShape2D = $hitbox/CollisionShape2D2
 
 
 var speed = 50
