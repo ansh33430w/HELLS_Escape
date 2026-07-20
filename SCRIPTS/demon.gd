@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 
+@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -146,6 +147,7 @@ func die():
 	velocity = Vector2.ZERO
 	hurtbox.monitoring = false
 	animation("DIE")
+	gpu_particles_2d.emitting = true
 	await animated_sprite_2d.animation_finished
 	queue_free()
 	#have to add droping mech
