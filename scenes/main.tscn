@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c05j40k7gsr54" path="res://SCRIPTS/camera_2d.gd" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dkia8qrm35y37" path="res://scenes/upgradeui.tscn" id="3_sugp2"]
 [ext_resource type="AudioStream" uid="uid://bdjcmfibj451n" path="res://ASSETS/SOUND/01 No Escape.mp3" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://6rkl637dewp3" path="res://scenes/stats.tscn" id="7_o6xl0"]
 
 [node name="main" type="Node2D" unique_id=881900660]
 script = ExtResource("1_tefeu")
@@ -28,3 +29,5 @@ script = ExtResource("2_jyhfs")
 stream = ExtResource("5_tbgi4")
 volume_db = -21.69
 autoplay = true
+
+[node name="STATS" parent="." unique_id=1068984393 groups=["stats"] instance=ExtResource("7_o6xl0")]

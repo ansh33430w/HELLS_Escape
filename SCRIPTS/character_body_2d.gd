@@ -141,7 +141,8 @@ func die():
 	isdead = true
 	isattacking = false
 	ishurt = false
-	
+	Gamedata.rooms_cleared = Roommanager.roomscleared
+	get_tree().get_first_node_in_group("stats").showstats()
 	velocity = Vector2.ZERO
 	var dir_name = direction_name(facing_direction)
 	var anim = "DIE_" + dir_name

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://6rkl637dewp3"]
+
+[ext_resource type="Script" uid="uid://bbhuat2cbxok8" path="res://SCRIPTS/stats.gd" id="1_3f7q0"]
+[ext_resource type="FontFile" uid="uid://dpsqtwi8e5sp0" path="res://ASSETS/PixelifySans-Bold.ttf" id="2_fk87l"]
+
+[sub_resource type="Theme" id="Theme_s45by"]
+
+[node name="STATS" type="CanvasLayer" unique_id=1068984393 groups=["stats"]]
+script = ExtResource("1_3f7q0")
+
+[node name="Panel" type="Panel" parent="." unique_id=754373210]
+offset_left = 184.0
+offset_top = 88.0
+offset_right = 936.0
+offset_bottom = 552.0
+theme = SubResource("Theme_s45by")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1007652872]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 112.0
+offset_right = 640.0
+offset_bottom = 368.0
+
+[node name="title" type="Label" parent="Panel/VBoxContainer" unique_id=581436262]
+layout_mode = 2
+
+[node name="rooms" type="Label" parent="Panel/VBoxContainer" unique_id=522054127]
+layout_mode = 2
+
+[node name="gold" type="Label" parent="Panel/VBoxContainer" unique_id=1423989785]
+layout_mode = 2
+
+[node name="kill" type="Label" parent="Panel/VBoxContainer" unique_id=274276866]
+layout_mode = 2
+
+[node name="retry button" type="Button" parent="Panel/VBoxContainer" unique_id=1687524597]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fk87l")
+text = "RETRY"

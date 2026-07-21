@@ -148,6 +148,7 @@ func die():
 	velocity = Vector2.ZERO
 	hurtbox.monitoring = false
 	animation("DIE")
+	Gamedata.monster_killed +=1
 	$AudioStreamPlayer2.play()
 	gpu_particles_2d.emitting = true
 	await animated_sprite_2d.animation_finished

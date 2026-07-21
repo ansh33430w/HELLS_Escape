@@ -55,7 +55,7 @@ position = Vector2(964, 502)
 position = Vector2(771, 497)
 
 [node name="gate" parent="." unique_id=147368474 instance=ExtResource("6_0hwry")]
-position = Vector2(-351, 2)
+position = Vector2(-351, 12)
 
 [node name="LimitBottomRight" parent="." unique_id=837742524 instance=ExtResource("7_tjvhs")]
 position = Vector2(1258, 552)
