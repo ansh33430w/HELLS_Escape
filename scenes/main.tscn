@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://jupscye0v7yk"]
 
 [ext_resource type="PackedScene" uid="uid://bujyolfs7yfbd" path="res://scenes/character_body_2d.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://1xwmmw2tir7p" path="res://scenes/main.gd" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dux7fweiw8tpv" path="res://hud.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://c05j40k7gsr54" path="res://SCRIPTS/camera_2d.gd" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dkia8qrm35y37" path="res://scenes/upgradeui.tscn" id="3_sugp2"]
+[ext_resource type="AudioStream" uid="uid://bdjcmfibj451n" path="res://ASSETS/SOUND/01 No Escape.mp3" id="5_tbgi4"]
 
 [node name="main" type="Node2D" unique_id=881900660]
+script = ExtResource("1_tefeu")
 
 [node name="CharacterBody2D" parent="." unique_id=1585367809 instance=ExtResource("1_o5qli")]
 z_index = 3
@@ -20,3 +23,8 @@ script = ExtResource("2_jyhfs")
 [node name="hud" parent="." unique_id=1247699368 groups=["hud"] instance=ExtResource("2_0wfyh")]
 
 [node name="upgradeui" parent="." unique_id=971541773 groups=["upgradeui"] instance=ExtResource("3_sugp2")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1663922894]
+stream = ExtResource("5_tbgi4")
+volume_db = -21.69
+autoplay = true

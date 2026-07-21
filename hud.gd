@@ -17,4 +17,4 @@ func updatehlt(cur , max):
 	
 	
 func updategold(amount):
-	label.text = "💰 " + str(amount)
+	label.text = "COINS : " + str(amount)

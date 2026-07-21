@@ -125,6 +125,7 @@ func Damage(amt):
 func hurt():
 	ishurt = true
 	animation("HURT")
+	$AudioStreamPlayer.play()
 	if not animated_sprite_2d.animation_finished.is_connected(_on_hurt_finished):
 		animated_sprite_2d.animation_finished.connect(_on_hurt_finished)
 
@@ -147,6 +148,7 @@ func die():
 	velocity = Vector2.ZERO
 	hurtbox.monitoring = false
 	animation("DIE")
+	$AudioStreamPlayer2.play()
 	gpu_particles_2d.emitting = true
 	await animated_sprite_2d.animation_finished
 	queue_free()

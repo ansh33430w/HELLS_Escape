@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://br0whq5lq625j" path="res://ASSETS/Tiny RPG Character Asset Pack 02 -Free Demon_A&Blood Monster_A/Characters(100x100 split)/Blood Monster_A/Blood Monster_A/Blood Monster_A_Hurt.png" id="3_e7uc6"]
 [ext_resource type="Texture2D" uid="uid://lea5f1l1ttf3" path="res://ASSETS/Tiny RPG Character Asset Pack 02 -Free Demon_A&Blood Monster_A/Characters(100x100 split)/Blood Monster_A/Blood Monster_A/Blood Monster_A_Idle.png" id="4_12iyx"]
 [ext_resource type="Texture2D" uid="uid://d2b2fttt1dlum" path="res://ASSETS/Tiny RPG Character Asset Pack 02 -Free Demon_A&Blood Monster_A/Characters(100x100 split)/Blood Monster_A/Blood Monster_A/Blood Monster_A_Walk.png" id="5_x8u1a"]
+[ext_resource type="AudioStream" uid="uid://cjkbfyv4pdvfs" path="res://ASSETS/SOUND/53439420-retro-hurt-sound-01-474779.mp3" id="7_12iyx"]
+[ext_resource type="AudioStream" uid="uid://cynultxvh1oqe" path="res://ASSETS/SOUND/universfield-character-fall-impact-352287.mp3" id="8_x8u1a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgf00"]
 atlas = ExtResource("1_q0bye")
@@ -288,3 +290,9 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 0.91
 process_material = SubResource("ParticleProcessMaterial_o5dt6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=214653372]
+stream = ExtResource("7_12iyx")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=79756020]
+stream = ExtResource("8_x8u1a")

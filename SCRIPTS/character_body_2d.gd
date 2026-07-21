@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $HITBOX
 @onready var hitboxshape: CollisionShape2D = $HITBOX/hitboxshape
+@onready var footsteps: AudioStreamPlayer = $footsteps
+@onready var atk: AudioStreamPlayer = $atk
 
 
 var hitboxoffset = 40.0
@@ -69,9 +71,10 @@ func _physics_process(delta: float) -> void:
 	if inputdir!= Vector2.ZERO:
 		facing_direction = inputdir
 		animation("RUN")
+		footsteps.play()
 	else:
 		animation("IDLE")
-	
+		footsteps.stop()
 	
 	
 	
@@ -111,6 +114,7 @@ func hurt():
 	print(anim)
 	if animated_sprite_2d.sprite_frames.has_animation(anim):
 		animated_sprite_2d.play(anim)
+		$hurt.play()
 		animated_sprite_2d.modulate = Color(1,.2,.2)
 		await get_tree().create_timer(.5).timeout
 		animated_sprite_2d.modulate = Color(1,1,1)
@@ -159,7 +163,7 @@ func die():
 
 
 func ATTACK():
-	
+	atk.play()
 	isattacking= true
 	var dir_name = direction_name(facing_direction)
 	var anim = "ATK_" + dir_name

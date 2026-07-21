@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://rw2n4sy0fm5c" path="res://ASSETS/2D HD Character Knight/Spritesheets/With shadows/Run.png" id="2_g2brh"]
 [ext_resource type="Texture2D" uid="uid://c77s12emjk7i0" path="res://ASSETS/2D HD Character Knight/Spritesheets/With shadows/Die.png" id="3_rhr3r"]
 [ext_resource type="Texture2D" uid="uid://d12ramqhr37t4" path="res://ASSETS/2D HD Character Knight/Spritesheets/With shadows/TakeDamage.png" id="4_t53lx"]
+[ext_resource type="AudioStream" uid="uid://b7pf0w0n18fso" path="res://ASSETS/SOUND/freesound_community-concrete-footsteps-1-6265.mp3" id="7_t53lx"]
+[ext_resource type="AudioStream" uid="uid://bp6oqnoxggdag" path="res://ASSETS/SOUND/freesound_community-sword-sound-2-36274(1).mp3" id="8_yi2kj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4r2ha"]
 atlas = ExtResource("2_4vejd")
@@ -4548,5 +4550,13 @@ visible = false
 [node name="HURTBOXSHAPE" type="CollisionShape2D" parent="HURTBOX" unique_id=2035618779]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_t53lx")
+
+[node name="footsteps" type="AudioStreamPlayer" parent="." unique_id=353107197]
+stream = ExtResource("7_t53lx")
+
+[node name="atk" type="AudioStreamPlayer" parent="." unique_id=525041559]
+stream = ExtResource("8_yi2kj")
+
+[node name="hurt" type="AudioStreamPlayer" parent="." unique_id=514439819]
 
 [connection signal="area_entered" from="HITBOX" to="." method="_on_hitbox_area_entered"]
