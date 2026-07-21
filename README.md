@@ -1,7 +1,7 @@
 # HELL'S ESCAPE
-A game where you play as a knight who is cursed by demon king to be enternally trapped in hell and even death can not free you from it ,
-now you are trying to escape from hell and end the curse ,
-to do so you have to fight all way from hell to Midgard [EARTH] 
+A game where you play as a knight who is cursed by demon king to be enternally trapped in hell and even death can not free him from it ,
+nowhe is  trying to escape from hell and end the curse ,
+to do so he have to fight all way from hell to Midgard [EARTH] 
 
 
 ## THEME 
