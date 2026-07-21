@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cenqcasnubi" path="res://scenes/spawnpoint.tscn" id="3_0g03g"]
 [ext_resource type="PackedScene" uid="uid://d3qki0dahdqk3" path="res://scenes/decor.tscn" id="4_0g03g"]
 [ext_resource type="PackedScene" uid="uid://dykgahxvklox" path="res://scenes/gate.tscn" id="6_0hwry"]
+[ext_resource type="PackedScene" uid="uid://bau2aavyobq6n" path="res://scenes/limit_bottom_right.tscn" id="7_tjvhs"]
+[ext_resource type="PackedScene" uid="uid://dqa74tiamrpfw" path="res://scenes/limit_top_left.tscn" id="8_np14n"]
 
 [node name="room_2" type="Node2D" unique_id=1250586204]
 script = ExtResource("1_0hwry")
@@ -54,3 +56,9 @@ position = Vector2(771, 497)
 
 [node name="gate" parent="." unique_id=147368474 instance=ExtResource("6_0hwry")]
 position = Vector2(-351, 2)
+
+[node name="LimitBottomRight" parent="." unique_id=837742524 instance=ExtResource("7_tjvhs")]
+position = Vector2(1258, 552)
+
+[node name="LimitTopLeft" parent="." unique_id=1866409002 instance=ExtResource("8_np14n")]
+position = Vector2(120, 100)

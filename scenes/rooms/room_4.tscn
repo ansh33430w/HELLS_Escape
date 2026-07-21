@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://k6o5hb5k6qip" path="res://scenes/floor.tscn" id="2_8h73v"]
 [ext_resource type="Texture2D" uid="uid://qpovgjldnqff" path="res://ASSETS/free-2d-top-down-pixel-dungeon-asset-pack/Tiled_files/doors_lever_chest_animation.png" id="3_8h73v"]
 [ext_resource type="Script" uid="uid://clqgiohxomaag" path="res://SCRIPTS/chest.gd" id="3_u8vhm"]
+[ext_resource type="PackedScene" uid="uid://bau2aavyobq6n" path="res://scenes/limit_bottom_right.tscn" id="5_nvm38"]
+[ext_resource type="PackedScene" uid="uid://dqa74tiamrpfw" path="res://scenes/limit_top_left.tscn" id="6_tfhis"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf4pg"]
 radius = 18.0
@@ -79,5 +81,11 @@ shape = SubResource("CircleShape2D_u8vhm")
 position = Vector2(449.00003, 198.99998)
 scale = Vector2(1.3571428, 1.35)
 sprite_frames = SubResource("SpriteFrames_wbpq4")
+
+[node name="LimitBottomRight" parent="." unique_id=837742524 instance=ExtResource("5_nvm38")]
+position = Vector2(857, 407)
+
+[node name="LimitTopLeft" parent="." unique_id=1866409002 instance=ExtResource("6_tfhis")]
+position = Vector2(71, 4)
 
 [connection signal="body_entered" from="chest" to="chest" method="_on_body_entered"]

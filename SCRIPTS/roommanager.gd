@@ -61,7 +61,8 @@ func change_room(scene:PackedScene):
 		cur_room.queue_free()
 	cur_room=scene.instantiate()
 	get_tree().current_scene.add_child(cur_room)
-	
+	var camera = get_tree().get_first_node_in_group("player").get_node("Camera2D")
+	camera.limits(cur_room)
 func _connect_gate():
 	var gate = cur_room.get_node_or_null("gate")
 	if gate and gate is Area2D:

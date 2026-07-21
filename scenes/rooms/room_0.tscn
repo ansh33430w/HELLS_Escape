@@ -914,5 +914,11 @@ script = ExtResource("6_maoc1")
 position = Vector2(227, 461)
 shape = SubResource("CircleShape2D_xdi0x")
 
+[node name="LimitTopLeft" type="Marker2D" parent="." unique_id=1116963522]
+position = Vector2(114, 98)
+
+[node name="LimitBottomRight" type="Marker2D" parent="." unique_id=1661156560]
+position = Vector2(830, 558)
+
 [connection signal="body_entered" from="altar" to="altar" method="_on_body_entered"]
 [connection signal="body_exited" from="altar" to="altar" method="_on_body_exited"]
