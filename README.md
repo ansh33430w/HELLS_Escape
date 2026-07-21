@@ -27,7 +27,8 @@ and challengs more room........
  4. A gpu particle effect on monster
  5. camera shake when player get damaged
  6. A ability temple to upgrade your abilites
-
+ 7. camera limits
+ 8. game stat when u die
 # features to be added
 1. 8-10 room expansion
 2. multiple playable character
